@@ -54,22 +54,34 @@
 			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
+
+	sound {
+		compatible = "simple-audio-card";
+		simple-audio-card,name = "Audio-I2S";
+		simple-audio-card,format = "i2s";
+		simple-audio-card,bitclock-master = <&dailink0_master>;
+		simple-audio-card,frame-master = <&dailink0_master>;
+		simple-audio-card,widgets =
+			"Headphone", "Headphones";
+		simple-audio-card,routing =
+			"Headphones", "HP_L",
+			"Headphones", "HP_R";
+		simple-audio-card,mclk-fs = <256>;
+
+		simple-audio-card,cpu {
+			sound-dai = <&i2s>;
+		};
+
+		dailink0_master: simple-audio-card,codec {
+			sound-dai = <&codec>;
+		};
+	};
 };
 
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
 			ralink,group = "gpio";
-			ralink,function = "gpio";
-		};
-
-		refclk {
-			ralink,group = "refclk";
-			ralink,function = "gpio";
-		};
-
-		i2s {
-			ralink,group = "i2s";
 			ralink,function = "gpio";
 		};
 
@@ -85,6 +97,20 @@
 
 		wdt {
 			ralink,group = "wdt";
+			ralink,function = "gpio";
+		};
+	};
+
+	i2s_pins: i2s {
+		i2s {
+			ralink,group = "i2s";
+			ralink,function = "i2s";
+		};
+	};
+
+	wm8960_mclk_pins: wm8960_mclk {
+		wm8960_mclk {
+			ralink,group = "refclk";
 			ralink,function = "gpio";
 		};
 	};
@@ -145,6 +171,25 @@
 };
 
 &i2c {
+	status = "okay";
+
+	codec: wm8960@1a {
+		#sound-dai-cells = <0>;
+		compatible = "wlf,wm8960";
+		reg = <0x1a>;
+
+		wlf,shared-lrclk;
+	};
+};
+
+&i2s {
+	#sound-dai-cells = <0>;
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2s_pins>, <&wm8960_mclk_pins>;
+};
+
+&gdma {
 	status = "okay";
 };
 
