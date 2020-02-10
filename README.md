@@ -1,7 +1,7 @@
 
 <h2>Target device</h2>
 
-This branch is for the [Raspberry Pi](https://www.raspberrypi.org/) board family 2B/3B/3B+/CM3
+This branch is for the [Raspberry Pi](https://www.raspberrypi.org/) board family 2B/3B/3B+/CM3.
 
 <img src="https://www.raspberrypi.org/homepage-9df4b/static/0ac033e17962a041a898d92057e60def/052d8/67d8fcc5b2796665a45f61a2e8a5bb7f10cdd3f5_raspberry-pi-3-1-1619x1080.jpg" width="250" title="Linkit7688 Image">
 
@@ -21,12 +21,12 @@ Install the required packages for your build system
 <h3>Clone and build</h3>
 Clone this branch into the current directory
 
-	git clone https://github.com/hosac/openwrt-source.git -b openwrt-19.07-raspberrypi32bit openwrt-19.07-raspberrypi32bit
+	git clone https://github.com/hosac/openwrt-source.git -b openwrt-19.07-raspberrypi32bit-openthread openwrt-19.07-raspberrypi32bit-openthread
 
 
 Change to created directory
 
-	cd openwrt-19.07-raspberrypi32bit
+	cd openwrt-19.07-raspberrypi32bit-openthread
 
 
 Update all latest package definitions from feeds.conf
@@ -39,7 +39,7 @@ Install symlinks of all updated feeds into package/feeds
 
 Use a prepared config file to set needed target and/or packages (e.g. 002_targetpackages.config) and copy it to .config
 
-	cp 002_targetpackages.config .config
+	cp 003_openthreadpackages.config .config
 	make defconfig
 
 	
@@ -102,5 +102,4 @@ For own settings the file system contains a /files folder, where customized file
 - To get the 2.4GHz running on RPi 3B+ set "Legacy" and a defined channel. It does not work by default (auto). After first startup Wi-Fi access point is starting only in 5GHz mode
 - Be aware, that in this setup **console over HDMI and USB keyboard has no password**, although root has one!
 - Sound output on jack only works without HDMI connection
-
 <br>
