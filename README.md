@@ -15,7 +15,7 @@ Install the required packages for your build system
 **Ubuntu 18.04**
 
 	sudo apt-get update
-	sudo apt-get install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip
+	sudo apt-get install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip ctags
 
 </br>
 <h3>Clone and build</h3>
