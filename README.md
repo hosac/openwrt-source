@@ -3,8 +3,6 @@
 
 This branch is for the [Raspberry Pi](https://www.raspberrypi.org/) board family 2B/3B/3B+/CM3
 
-<img src="https://www.raspberrypi.org/homepage-9df4b/static/0ac033e17962a041a898d92057e60def/052d8/67d8fcc5b2796665a45f61a2e8a5bb7f10cdd3f5_raspberry-pi-3-1-1619x1080.jpg" width="250" title="Linkit7688 Image">
-
 </br>
 <h2>Image creation</h2>
 
